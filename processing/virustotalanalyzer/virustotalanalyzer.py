@@ -61,7 +61,7 @@ class VirusTotalAnalyzer(ProcessingModule):
             if malware is not None:
                 details["malware_name"] = malware.encode("ascii")
                 positive_avs.append(details)
-                self.add_ioc(malware.encode("ascii"))
+                self.add_ioc(malware.encode("ascii"), "Malware")
             else:
                 negative_avs.append(details)
         results["avs_reporting_positive"] = positive_avs
