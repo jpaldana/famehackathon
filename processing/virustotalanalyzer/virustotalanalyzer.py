@@ -20,7 +20,7 @@ class VirusTotalAnalyzer(ProcessingModule):
 
     config = [
         {
-            'name': 'api-key',
+            'name': 'api_key',
             'type': 'str',
             'default': 'Meowmix',
             'description': "API Key for VirusTotal"
