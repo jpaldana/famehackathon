@@ -9,6 +9,12 @@ try:
 except ImportError:
     HAVE_VIRUSTOTAL = False
 
+try:
+    from pprint import pprint
+    HAVE_PPRINT = True
+except ImportError:
+    HAVE_PPRINT = False
+
 from fame.common.utils import tempdir
 from fame.common.exceptions import ModuleInitializationError, ModuleExecutionError
 from fame.core.module import ProcessingModule
@@ -42,6 +48,7 @@ class VirusTotalAnalyzer(ProcessingModule):
         results["sha256"] = vt_report.sha256
         results["hit_ratio"] = vt_report.positives / vt_report.total
         results["vt_scan_uid"] = vt_report.scan_id
+        print()
         positive_avs = []
         negative_avs = []
         for antivirus, malware in vt_report:
@@ -58,6 +65,10 @@ class VirusTotalAnalyzer(ProcessingModule):
                 negative_avs.append(details)
         results["avs_reporting_positive"] = positive_avs
         results["avs_reporting_negative"] = negative_avs
+        if HAVE_PPRINT:
+            pprint(results)
+        else:
+            print(results)
         self.results = results
 
 
