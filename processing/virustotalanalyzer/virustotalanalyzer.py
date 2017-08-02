@@ -33,7 +33,7 @@ class VirusTotalAnalyzer(ProcessingModule):
             raise ModuleInitializationError(self, "Missing dependency: virustotal")
 
     def each(self, target):
-        v = virustotal.VirusTotal(self.api_key)
+        v = virustotal.VirusTotal("572739f1adea8d064a8e7c6ca63a3d0bd53e9b65894b2817f164da15a81a7cef")
         vt_report = v.scan(target)
         vt_report.join()
         assert vt_report.done is True
