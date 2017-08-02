@@ -14,9 +14,9 @@ from fame.common.exceptions import ModuleInitializationError, ModuleExecutionErr
 from fame.core.module import ProcessingModule
 
 
-class VirusTotal(ProcessingModule):
+class VirusTotalAnalyzer(ProcessingModule):
     name = ""
-    description = "This is broken. So bad. So.... bad...."
+    description = "Submits file to VirusTotal to get scan reports."
     acts_on = ["executable", "word", "html", "rtf", "excel", "pdf", "javascript", "jar", "url", "powerpoint", "vbs"]
 
     config = [
