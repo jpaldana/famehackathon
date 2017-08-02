@@ -37,9 +37,9 @@ class VirusTotalAnalyzer(ProcessingModule):
         vt_report = v.scan(target)
         vt_report.join()
         assert vt_report.done is True
-        self.report.sha256 = vt_report.sha256
-        self.report.hit_ratio = vt_report.positives / vt_report.total
-        self.report.vt_scan_uid = vt_report.scan
+        self.results.sha256 = vt_report.sha256
+        self.results.hit_ratio = vt_report.positives / vt_report.total
+        self.results.vt_scan_uid = vt_report.scan
        	positive_avs = []
 	negative_avs = []
 	for antivirus, malware in report:
@@ -54,6 +54,6 @@ class VirusTotalAnalyzer(ProcessingModule):
 		positive_avs.append(details)
 	    else:
 		negative_avs.append(details)
-	report.avs_reporting_positive = positive_avs
-        report.avs_reporting_negative = negative_avs
+	self.results.avs_reporting_positive = positive_avs
+        self.results.avs_reporting_negative = negative_avs
         return True
