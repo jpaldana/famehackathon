@@ -37,6 +37,7 @@ class VirusTotalAnalyzer(ProcessingModule):
         vt_report = v.scan(target)
         vt_report.join()
         assert vt_report.done is True
+        self.results = {}
         self.results.sha256 = vt_report.sha256
         self.results.hit_ratio = vt_report.positives / vt_report.total
         self.results.vt_scan_uid = vt_report.scan
