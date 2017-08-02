@@ -17,7 +17,6 @@ from fame.core.module import ProcessingModule
 class VirusTotalAnalyzer(ProcessingModule):
     name = "VirusTotalAnalyzer"
     description = "Submits file to VirusTotal to get scan reports."
-    acts_on = ["executable", "word", "html", "rtf", "excel", "pdf", "javascript", "jar", "url", "powerpoint", "vbs"]
 
     config = [
         {
